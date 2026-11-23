@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Beranda — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="beranda" data-screen="main">
+  <header class="hero">
+    <div class="hero-top">
+      <div class="grow">
+        <div class="hero-kicker">Senin, 23 November 2026</div>
+        <div class="hero-title">Halo, Agus</div>
+        <div class="hero-sub">6 outlet tersisa di rute hari ini.</div>
+      </div>
+      <div class="hero-actions">
+        <a class="iconbtn" href="#" aria-label="Notifikasi"><svg class="ic"><use href="#i-bell"/></svg></a>
+        <div class="avatar">AS</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="scroll pull">
+    <div class="card route-card">
+      <div class="route-top">
+        <div class="route-code">DJO<small>01</small></div>
+        <div class="grow">
+          <div class="between">
+            <div>
+              <div class="strong" style="font-size:15px;letter-spacing:-.3px">Malang Kota</div>
+              <div class="tiny muted mt6">Rute aktif hari ini</div>
+            </div>
+            <span class="badge green"><svg class="ic"><use href="#i-check"/></svg>Aktif</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-meta">
+        <span class="meta-pill"><svg class="ic"><use href="#i-user"/></svg>SUGIANTO</span>
+        <span class="meta-pill"><svg class="ic"><use href="#i-truck"/></svg>N 9012 XY</span>
+        <span class="meta-pill"><svg class="ic"><use href="#i-printer"/></svg>RPP02N</span>
+      </div>
+      <div class="odo">
+        <div>
+          <div class="lbl">Km mulai</div>
+          <div class="v">45.210 <small>km</small></div>
+        </div>
+        <div style="text-align:center">
+          <div class="lbl">Jarak</div>
+          <div class="v" style="font-size:15px;color:var(--muted)">58 km</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lbl">Km selesai</div>
+          <div class="v">45.268 <small>km</small></div>
+        </div>
+      </div>
+      <div class="progress teal mt10"><span style="width:78%"></span></div>
+    </div>
+
+    <div class="section">
+      <div class="actions">
+        <a class="tile" href="12-jualplgn.html"><span class="itile i-brand"><svg class="ic"><use href="#i-pin"/></svg></span>Kunjungan</a>
+        <a class="tile" href="12-jualplgn.html"><span class="itile i-teal"><svg class="ic"><use href="#i-cart"/></svg></span>Jual Rokok</a>
+        <a class="tile" href="22-bon.html"><span class="itile i-amber"><svg class="ic"><use href="#i-file"/></svg></span>Bon Rokok</a>
+        <a class="tile" href="37-upload.html"><span class="itile i-violet"><svg class="ic"><use href="#i-upload"/></svg></span>Upload</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2>Ringkasan hari ini</h2><a class="link" href="11-hasil.html">Detail<svg class="ic"><use href="#i-chevron-right"/></svg></a></div>
+      <div class="kpis">
+        <div class="kpi">
+          <div class="k-label">Kunjungan</div>
+          <div class="k-value">12<small>/18</small></div>
+          <div class="progress slim mt8"><span style="width:66%"></span></div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Penjualan</div>
+          <div class="k-value">8,42<small> jt</small></div>
+          <div class="k-foot">Rp 8.420.000</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Piutang</div>
+          <div class="k-value" style="color:var(--rose)">2,15<small> jt</small></div>
+          <div class="k-foot" style="color:var(--rose)">3 nota overdue</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card" data-panel-group>
+        <div class="card-head">
+          <div class="card-title"><svg class="ic"><use href="#i-tag"/></svg>Daftar Harga</div>
+          <a class="link" href="#">Unduh<svg class="ic"><use href="#i-download"/></svg></a>
+        </div>
+        <div class="seg mb12">
+          <button class="active" data-panel-btn="rokok">Harga Rokok</button>
+          <button data-panel-btn="retur">Harga Retur</button>
+        </div>
+        <div data-panel="rokok">
+          <div class="table-wrap">
+            <table class="ptable">
+              <thead><tr><th>Brand</th><th>Dist</th><th>Agen</th><th>Retail</th><th>User</th></tr></thead>
+              <tbody>
+                <tr><td class="brand-name">DSS 234</td><td>21.500</td><td>22.000</td><td>23.000</td><td>24.000</td></tr>
+                <tr><td class="brand-name">A Mild</td><td>25.500</td><td>26.000</td><td>27.000</td><td>28.000</td></tr>
+                <tr><td class="brand-name">Surya Pro</td><td>24.000</td><td>24.500</td><td>25.500</td><td>26.500</td></tr>
+                <tr><td class="brand-name">Djarum Super</td><td>23.000</td><td>23.500</td><td>24.500</td><td>25.500</td></tr>
+                <tr><td class="brand-name">GG Mild</td><td>22.500</td><td>23.000</td><td>24.000</td><td>25.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div data-panel="retur" hidden>
+          <div class="table-wrap">
+            <table class="ptable">
+              <thead><tr><th>Brand</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+              <tbody>
+                <tr><td class="brand-name">DSS 234</td><td>19.500</td><td>20.000</td><td>20.500</td></tr>
+                <tr><td class="brand-name">A Mild</td><td>23.000</td><td>23.500</td><td>24.000</td></tr>
+                <tr><td class="brand-name">Surya Pro</td><td>21.500</td><td>22.000</td><td>22.500</td></tr>
+                <tr><td class="brand-name">Djarum Super</td><td>20.500</td><td>21.000</td><td>21.500</td></tr>
+                <tr><td class="brand-name">GG Mild</td><td>20.000</td><td>20.500</td><td>21.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-green"><svg class="ic"><use href="#i-printer"/></svg></span>
+          <div class="grow"><div class="t">Printer siap</div><div class="s">RPP02N · Bluetooth terhubung</div></div>
+          <span class="badge green">Online</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Input Moster — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="moster-rokok">
+  <header class="appbar">
+    <a class="iconbtn" href="30-moster.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Input Moster</h1><p>Promo bonus rokok</p></div>
+    <span class="spacer"></span>
+    <span class="badge violet">Moster</span>
+  </header>
+
+  <main class="scroll">
+    <div class="banner info">
+      <svg class="ic"><use href="#i-sparkle"/></svg>
+      <span>Promo moster hanya berlaku untuk brand yang sudah ada penjualan hari ini.</span>
+    </div>
+
+    <div class="label mt16">Brand</div>
+    <div class="brandsel">
+      <span class="bmark">DSS<br>234</span>
+      <div class="grow">
+        <div class="bt">Dji Sam Soe 234 <span class="badge violet">Promo</span></div>
+        <div class="bs">Bonus 2 bks setiap 10 bks penjualan</div>
+      </div>
+      <svg class="ic chev"><use href="#i-chevron-down"/></svg>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="between mb12">
+          <div class="card-title"><svg class="ic"><use href="#i-gift"/></svg>Jumlah penjualan</div>
+          <span class="badge">bks</span>
+        </div>
+        <div class="stepper">
+          <button class="step-btn" type="button" data-step="-"><svg class="ic"><use href="#i-minus"/></svg></button>
+          <div class="step-val" data-qty>10<small>bks</small></div>
+          <button class="step-btn" type="button" data-step="+"><svg class="ic"><use href="#i-plus"/></svg></button>
+        </div>
+        <div class="totalrow mt12">
+          <span class="tl">Bonus didapat</span>
+          <span class="tv" style="color:var(--violet)">2 bks</span>
+        </div>
+        <div class="hintline">Bonus otomatis dihitung dari kelipatan 10 bks.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-green"><svg class="ic"><use href="#i-navigation"/></svg></span>
+          <div class="grow"><div class="t">Akurasi GPS ±8 m</div><div class="s">Titik outlet cocok · 09.42 WIB</div></div>
+          <span class="badge green">Sesuai</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner warn mt16">
+      <svg class="ic"><use href="#i-alert"/></svg>
+      <span>Bonus moster tidak dapat dibatalkan setelah disimpan.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Moster</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

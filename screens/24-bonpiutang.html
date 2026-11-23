@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Bon Nota Piutang — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="bon-piutang">
+  <header class="appbar">
+    <a class="iconbtn" href="26-piutplgn.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Bon Nota Piutang</h1><p>Upload &amp; ACC nota</p></div>
+    <span class="spacer"></span>
+    <span class="badge amber">3 pending</span>
+  </header>
+
+  <main class="scroll">
+    <div class="search mb12">
+      <svg class="ic"><use href="#i-search"/></svg>
+      <input type="text" placeholder="Cari nama outlet">
+      <button class="filter-btn" type="button" aria-label="Filter"><svg class="ic"><use href="#i-filter"/></svg></button>
+    </div>
+
+    <div class="grid2">
+      <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+        <span class="itile i-brand"><svg class="ic"><use href="#i-download"/></svg></span>
+        <div class="between mt10"><div class="strong" style="font-size:13px">Download ACC</div><span class="badge brand">2</span></div>
+        <div class="tiny muted mt6">Ambil nota yang sudah di-ACC</div>
+      </a>
+      <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+        <span class="itile i-amber"><svg class="ic"><use href="#i-upload"/></svg></span>
+        <div class="between mt10"><div class="strong" style="font-size:13px">Upload</div><span class="badge amber">3</span></div>
+        <div class="tiny muted mt6">Kirim nota piutang baru</div>
+      </a>
+    </div>
+
+    <div class="section">
+      <div class="card tight">
+        <div class="between" style="padding:14px 16px 4px">
+          <div class="card-title"><svg class="ic"><use href="#i-file"/></svg>Nota Belum Di-ACC</div>
+          <span class="badge">3 nota</span>
+        </div>
+        <div class="list" style="padding:0 16px 4px">
+          <div class="row">
+            <span class="av c1" style="font-size:11px">SJ</span>
+            <div class="grow"><div class="t">Toko Sinar Jaya</div><div class="s">NP-8891 · 12 Nov 2026</div></div>
+            <div class="r"><div class="amt">Rp 152.500</div><div class="sub"><span class="badge amber">Pending</span></div></div>
+          </div>
+          <div class="row">
+            <span class="av c3" style="font-size:11px">BS</span>
+            <div class="grow"><div class="t">Warung Bu Siti</div><div class="s">NP-8894 · 16 Nov 2026</div></div>
+            <div class="r"><div class="amt">Rp 450.000</div><div class="sub"><span class="badge amber">Pending</span></div></div>
+          </div>
+          <div class="row">
+            <span class="av c5" style="font-size:11px">KB</span>
+            <div class="grow"><div class="t">Kios Berkah</div><div class="s">NP-8901 · 20 Nov 2026</div></div>
+            <div class="r"><div class="amt">Rp 1.200.000</div><div class="sub"><span class="badge rose">Overdue</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-teal"><svg class="ic"><use href="#i-check-circle"/></svg></span>
+          <div class="grow"><div class="t">2 nota sudah di-ACC</div><div class="s">Terakhir sinkron hari ini 07.12</div></div>
+          <span class="badge green">Siap</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <div class="hint">Pastikan koneksi internet stabil saat upload.</div>
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-upload"/></svg>Upload Semua Nota</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

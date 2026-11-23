@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Kembali Nota Piutang — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="kembali-piut">
+  <header class="appbar">
+    <a class="iconbtn" href="26-piutplgn.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Kembali Nota Piutang</h1><p>Nota piutang yang dikembalikan</p></div>
+    <span class="spacer"></span>
+    <span class="badge rose">2 kembali</span>
+  </header>
+
+  <main class="scroll">
+    <div class="search mb12">
+      <svg class="ic"><use href="#i-search"/></svg>
+      <input type="text" placeholder="Cari nama outlet">
+      <button class="filter-btn" type="button" aria-label="Filter"><svg class="ic"><use href="#i-filter"/></svg></button>
+    </div>
+
+    <div class="grid2">
+      <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+        <span class="itile i-brand"><svg class="ic"><use href="#i-download"/></svg></span>
+        <div class="between mt10"><div class="strong" style="font-size:13px">Download ACC</div><span class="badge brand">1</span></div>
+        <div class="tiny muted mt6">Ambil keputusan ACC pengembalian</div>
+      </a>
+      <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+        <span class="itile i-rose"><svg class="ic"><use href="#i-upload"/></svg></span>
+        <div class="between mt10"><div class="strong" style="font-size:13px">Upload</div><span class="badge rose">2</span></div>
+        <div class="tiny muted mt6">Kirim nota pengembalian</div>
+      </a>
+    </div>
+
+    <div class="section">
+      <div class="card tight">
+        <div class="between" style="padding:14px 16px 4px">
+          <div class="card-title"><svg class="ic"><use href="#i-refresh"/></svg>Nota Dikembalikan</div>
+          <span class="badge">2 nota</span>
+        </div>
+        <div class="list" style="padding:0 16px 4px">
+          <div class="row">
+            <span class="av c3" style="font-size:11px">BS</span>
+            <div class="grow"><div class="t">Warung Bu Siti</div><div class="s">KMB-204 · 18 Nov 2026</div></div>
+            <div class="r"><div class="amt">Rp 300.000</div><div class="sub"><span class="badge amber">Menunggu ACC</span></div></div>
+          </div>
+          <div class="row">
+            <span class="av c5" style="font-size:11px">KB</span>
+            <div class="grow"><div class="t">Kios Berkah</div><div class="s">KMB-201 · 15 Nov 2026</div></div>
+            <div class="r"><div class="amt">Rp 450.000</div><div class="sub"><span class="badge green">ACC</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner info mt16">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Nota yang dikembalikan akan mengurangi piutang outlet setelah di-ACC distributor.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <div class="hint">Upload membutuhkan koneksi internet.</div>
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-upload"/></svg>Upload Pengembalian</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

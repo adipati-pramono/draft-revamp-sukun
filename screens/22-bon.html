@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Bon Rokok — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="bon">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Bon Rokok</h1><p>Kelola bon &amp; sinkronisasi</p></div>
+    <span class="spacer"></span>
+    <a class="iconbtn accent" href="#" aria-label="Buat bon"><svg class="ic"><use href="#i-plus"/></svg></a>
+  </header>
+
+  <main class="scroll">
+    <div class="banner success">
+      <svg class="ic"><use href="#i-check-circle"/></svg>
+      <span>Semua penjualan hari ini sudah di-upload. Bon aman dibuat.</span>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><svg class="ic"><use href="#i-file"/></svg>Sisa Bon Rokok</div>
+          <span class="badge amber">Perlu dipantau</span>
+        </div>
+        <div class="between">
+          <div>
+            <div class="label-cap">Sisa jatah</div>
+            <div class="big mt6">24 <span class="tiny muted">bks</span></div>
+            <div class="tiny muted mt6">Jatah 40 · terpakai 16</div>
+          </div>
+          <div class="ring" style="--p:60"><span>60%</span></div>
+        </div>
+        <div class="progress amber mt12"><span style="width:60%"></span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="grid2">
+        <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+          <span class="itile i-brand"><svg class="ic"><use href="#i-download"/></svg></span>
+          <div class="strong mt10" style="font-size:13px">Download ACC</div>
+          <div class="tiny muted mt6">Sinkron data bon dari server</div>
+        </a>
+        <a class="card flat" href="#" style="text-decoration:none;color:inherit">
+          <span class="itile i-amber"><svg class="ic"><use href="#i-upload"/></svg></span>
+          <div class="between mt10"><div class="strong" style="font-size:13px">Upload Bon</div><span class="badge amber">3</span></div>
+          <div class="tiny muted mt6">Kirim bon yang belum tersinkron</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card tight">
+        <div class="between" style="padding:14px 16px 4px">
+          <div class="card-title"><svg class="ic"><use href="#i-clock"/></svg>Bon Terbaru</div>
+          <a class="link" href="#">Semua<svg class="ic"><use href="#i-chevron-right"/></svg></a>
+        </div>
+        <div class="list" style="padding:0 16px 4px">
+          <div class="row">
+            <span class="itile sm i-green"><svg class="ic"><use href="#i-check"/></svg></span>
+            <div class="grow"><div class="t">BR-1042 · Toko Sinar Jaya</div><div class="s">4 bks · 09.18</div></div>
+            <span class="badge green">Tersinkron</span>
+          </div>
+          <div class="row">
+            <span class="itile sm i-amber"><svg class="ic"><use href="#i-upload"/></svg></span>
+            <div class="grow"><div class="t">BR-1041 · Warung Bu Siti</div><div class="s">6 bks · 08.52</div></div>
+            <span class="badge amber">Pending</span>
+          </div>
+          <div class="row">
+            <span class="itile sm i-brand"><svg class="ic"><use href="#i-check-circle"/></svg></span>
+            <div class="grow"><div class="t">BR-1040 · Kios Berkah</div><div class="s">2 bks · 08.10</div></div>
+            <span class="badge green">ACC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <a class="btn primary block" href="23-bonrokok.html"><svg class="ic"><use href="#i-plus"/></svg>Buat Bon Baru</a>
+    </div>
+  </main>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

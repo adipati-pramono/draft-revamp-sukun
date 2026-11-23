@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Data Outlet — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="reg-plgn">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Data Outlet</h1><p>Pelanggan terdaftar</p></div>
+    <span class="spacer"></span>
+    <span class="badge brand">42 outlet</span>
+  </header>
+
+  <main class="scroll">
+    <div class="card tight" style="padding:10px">
+      <div class="statstrip">
+        <div><div class="sv brand">42</div><div class="sl">Total</div></div>
+        <div><div class="sv green">38</div><div class="sl">Aktif</div></div>
+        <div><div class="sv teal">4</div><div class="sl">Baru</div></div>
+        <div><div class="sv">0</div><div class="sl">Nonaktif</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="search">
+        <svg class="ic"><use href="#i-search"/></svg>
+        <input type="text" placeholder="Cari nama outlet atau pemilik">
+        <button class="filter-btn" type="button" aria-label="Filter"><svg class="ic"><use href="#i-filter"/></svg></button>
+      </div>
+    </div>
+
+    <div class="chips mt12">
+      <button class="chip active" type="button">Semua</button>
+      <button class="chip" type="button">Retail</button>
+      <button class="chip" type="button">Grosir</button>
+      <button class="chip" type="button">Stoko</button>
+    </div>
+
+    <div class="cards-list">
+      <a class="oc" href="34-regedit.html">
+        <span class="av c1">SJ</span>
+        <div class="grow">
+          <div class="n">Toko Sinar Jaya <span class="badge green">Aktif</span></div>
+          <div class="m">Retail <span class="dot"></span> H. Ahmad <span class="dot"></span> 0812-3456-7890</div>
+        </div>
+        <span class="iconbtn ghost" style="width:34px;height:34px"><svg class="ic"><use href="#i-edit"/></svg></span>
+      </a>
+      <a class="oc" href="34-regedit.html">
+        <span class="av c3">BS</span>
+        <div class="grow">
+          <div class="n">Warung Bu Siti <span class="badge green">Aktif</span></div>
+          <div class="m">Grosir <span class="dot"></span> Siti Aminah <span class="dot"></span> 0813-2211-0876</div>
+        </div>
+        <span class="iconbtn ghost" style="width:34px;height:34px"><svg class="ic"><use href="#i-edit"/></svg></span>
+      </a>
+      <a class="oc" href="34-regedit.html">
+        <span class="av c5">KB</span>
+        <div class="grow">
+          <div class="n">Kios Berkah <span class="badge green">Aktif</span></div>
+          <div class="m">Stoko <span class="dot"></span> Budi Santoso <span class="dot"></span> 0856-7788-1122</div>
+        </div>
+        <span class="iconbtn ghost" style="width:34px;height:34px"><svg class="ic"><use href="#i-edit"/></svg></span>
+      </a>
+      <a class="oc" href="34-regedit.html">
+        <span class="av c4">SR</span>
+        <div class="grow">
+          <div class="n">Toko Sumber Rejeki <span class="badge teal">Baru</span></div>
+          <div class="m">Retail <span class="dot"></span> Rina Wati <span class="dot"></span> 0821-4455-6677</div>
+        </div>
+        <span class="iconbtn ghost" style="width:34px;height:34px"><svg class="ic"><use href="#i-edit"/></svg></span>
+      </a>
+    </div>
+
+    <div class="banner info mt16">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Outlet baru harus diverifikasi admin sebelum bisa menerima bon piutang.</span>
+    </div>
+  </main>
+
+  <a class="fab" href="33-regnew.html" style="bottom:24px" aria-label="Tambah outlet"><svg class="ic"><use href="#i-plus"/></svg></a>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

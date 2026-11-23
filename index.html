@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SWI Sales 2.0 — Konsep Revamp UI/UX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070B18; --panel:#0C1224; --panel-2:#111A31; --line:rgba(148,163,184,.14);
+    --ink:#F2F5FF; --muted:#94A3B8; --faint:#64748B;
+    --brand:#4A67E0; --brand-2:#7C93F2; --teal:#0FA98E;
+    --grad:linear-gradient(135deg,#4A67E0 0%,#2E4BC6 50%,#16296B 100%);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  button,input{font-family:inherit}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+
+  /* Header */
+  header.top{
+    position:sticky;top:0;z-index:40;
+    background:rgba(7,11,24,.82);backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+  }
+  .top-in{display:flex;align-items:center;gap:14px;height:66px}
+  .brandmark{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(74,103,224,.35);flex:none}
+  .brandmark svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .top-in b{font-size:15px;letter-spacing:-.2px}
+  .top-in b span{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .top-nav{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .top-nav a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:9px 14px;border-radius:10px}
+  .top-nav a:hover{color:#fff;background:rgba(148,163,184,.1)}
+  .top-nav a.cta{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(74,103,224,.3)}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{
+    content:'';position:absolute;inset:-40% -10% auto;height:560px;
+    background:radial-gradient(50% 60% at 70% 30%, rgba(74,103,224,.38), transparent 70%),
+               radial-gradient(45% 55% at 15% 10%, rgba(15,169,142,.16), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-in{position:relative;padding:64px 0 44px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-2);background:rgba(74,103,224,.12);border:1px solid rgba(124,147,242,.28);padding:7px 13px;border-radius:999px}
+  .kicker i{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.14)}
+  h1{margin:20px 0 12px;font-size:clamp(34px,4.6vw,56px);line-height:1.04;letter-spacing:-.035em;font-weight:800;max-width:820px}
+  h1 em{font-style:normal;background:linear-gradient(100deg,#8FA6FF,#4A67E0 55%,#25C2A6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{max-width:660px;color:var(--muted);font-size:16px;line-height:1.65}
+  .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .stat{background:rgba(17,26,49,.72);border:1px solid var(--line);border-radius:16px;padding:14px 18px;min-width:132px}
+  .stat b{display:block;font-size:24px;letter-spacing:-.02em}
+  .stat span{font-size:11.5px;color:var(--muted);font-weight:500}
+  .stat.accent b{color:#7FE7D2}
+
+  /* Toolbar */
+  .toolbar{position:sticky;top:66px;z-index:30;background:rgba(7,11,24,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:14px 0}
+  .toolbar-in{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .search{position:relative;flex:1;min-width:220px;max-width:360px}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:none;stroke:var(--faint);stroke-width:2;stroke-linecap:round}
+  .search input{
+    width:100%;height:42px;border-radius:12px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);padding:0 14px 0 39px;font-size:13.5px;outline:none;
+  }
+  .search input::placeholder{color:var(--faint)}
+  .search input:focus{border-color:rgba(124,147,242,.5);box-shadow:0 0 0 3px rgba(74,103,224,.14)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap}
+  .chip{
+    border:1px solid var(--line);background:rgba(17,26,49,.6);color:var(--muted);
+    height:34px;padding:0 14px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;
+    transition:.16s ease;
+  }
+  .chip:hover{color:#fff;border-color:rgba(148,163,184,.3)}
+  .chip.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 6px 16px rgba(74,103,224,.28)}
+  .count{margin-left:auto;font-size:12.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:26px 22px;padding:36px 0 40px}
+  .item{cursor:pointer;outline:none}
+  .phone-wrap{
+    position:relative;width:100%;aspect-ratio:390/844;border-radius:26px;
+    background:linear-gradient(160deg,#1A2440,#0B1122);
+    padding:7px;border:1px solid rgba(148,163,184,.16);
+    box-shadow:0 22px 48px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.08);
+    transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s, border-color .2s;
+  }
+  .item:hover .phone-wrap{transform:translateY(-7px);box-shadow:0 34px 64px rgba(0,0,0,.58);border-color:rgba(124,147,242,.4)}
+  .item:focus-visible .phone-wrap{border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(74,103,224,.3),0 22px 48px rgba(0,0,0,.5)}
+  .screen-box{position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;background:#F4F6FB}
+  .screen-box iframe{width:390px;height:844px;border:0;transform-origin:top left;display:block;background:#F4F6FB;pointer-events:none}
+  .phone-wrap::before{content:'';position:absolute;top:13px;left:50%;transform:translateX(-50%);width:52px;height:5px;border-radius:999px;background:rgba(7,11,24,.82);z-index:2;pointer-events:none}
+  .hovercue{
+    position:absolute;inset:7px;border-radius:20px;display:grid;place-items:center;
+    background:linear-gradient(180deg,rgba(7,11,24,0) 30%,rgba(7,11,24,.72));
+    opacity:0;transition:opacity .2s ease;z-index:3;
+  }
+  .item:hover .hovercue{opacity:1}
+  .hovercue span{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0B1437;font-weight:700;font-size:12px;padding:9px 15px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+  .hovercue svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .meta{display:flex;align-items:flex-start;gap:10px;padding:13px 5px 0}
+  .no{font-size:11px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums;background:rgba(148,163,184,.1);border-radius:7px;padding:3px 7px;margin-top:1px}
+  .meta h3{font-size:13.5px;font-weight:650;letter-spacing:-.1px;margin:0}
+  .meta p{margin:2px 0 0;font-size:11.5px;color:var(--faint)}
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:70px 0;border:1px dashed var(--line);border-radius:20px;background:rgba(17,26,49,.35)}
+
+  /* Sections footer */
+  .note{border-top:1px solid var(--line);padding:38px 0 60px;color:var(--muted);font-size:13px;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+  .note b{color:var(--ink)}
+  .note .sep{width:1px;height:26px;background:var(--line)}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px}
+  .modal.open{display:grid}
+  .scrim{position:absolute;inset:0;background:rgba(3,6,14,.78);backdrop-filter:blur(8px)}
+  .modal-card{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .modal-bar{display:flex;align-items:center;gap:12px;width:100%;max-width:520px}
+  .modal-bar h4{margin:0;font-size:14px;font-weight:650}
+  .modal-bar .sp{flex:1}
+  .mbtn{border:1px solid rgba(148,163,184,.25);background:rgba(17,26,49,.9);color:#fff;border-radius:10px;height:36px;padding:0 13px;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+  .mbtn:hover{background:rgba(148,163,184,.16)}
+  .mbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .mphone{position:relative;border-radius:30px;background:linear-gradient(160deg,#1A2440,#0B1122);padding:8px;border:1px solid rgba(148,163,184,.2);box-shadow:0 40px 100px rgba(0,0,0,.7);transform-origin:center center}
+  .mphone iframe{width:390px;height:844px;border:0;border-radius:22px;display:block;background:#F4F6FB}
+  body.locked{overflow:hidden}
+
+  @media (max-width:640px){
+    .wrap{padding:0 18px}
+    .hero-in{padding:44px 0 34px}
+    .top-nav a:not(.cta){display:none}
+    .toolbar{top:66px}
+    .count{display:none}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:22px 14px}
+    .phone-wrap{padding:5px;border-radius:20px}
+    .screen-box{border-radius:16px}
+    .hovercue{inset:5px;border-radius:16px}
+    .meta p{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <span class="brandmark"><svg viewBox="0 0 24 24"><path d="M3 17V7l6 5 3-5 3 5 6-5v10"/><path d="M3 20h18"/></svg></span>
+    <b>SWI Sales 2.0<span>Konsep revamp · PT. SUKUN WARTONO INDONESIA</span></b>
+    <nav class="top-nav">
+      <a href="design-system.html">Design System</a>
+      <a class="cta" href="screens/01-login.html">Buka Prototipe</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <span class="kicker"><i></i>UI/UX Revamp · 37 Layar</span>
+    <h1>Kemudahan operasional<br>sales dalam <em>satu genggaman</em>.</h1>
+    <p class="lede">Seluruh alur aplikasi lapangan didesain ulang: login hingga upload data harian. Navigasi lebih jelas, input lebih cepat, dan status penting selalu terlihat.</p>
+    <div class="stats">
+      <div class="stat"><b>37</b><span>Layar terancang</span></div>
+      <div class="stat"><b>6</b><span>Modul utama</span></div>
+      <div class="stat accent"><b>100%</b><span>Alur asli terjaga</span></div>
+      <div class="stat"><b>390</b><span>px basis mobile</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="wrap toolbar-in">
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Cari layar, modul, atau fitur…" aria-label="Cari layar">
+    </label>
+    <div class="chips" id="chips">
+      <button class="chip on" data-cat="all">Semua</button>
+      <button class="chip" data-cat="awal">Masuk &amp; Beranda</button>
+      <button class="chip" data-cat="jalan">Perjalanan</button>
+      <button class="chip" data-cat="jual">Penjualan</button>
+      <button class="chip" data-cat="bon">Bon &amp; Piutang</button>
+      <button class="chip" data-cat="outlet">Promo &amp; Outlet</button>
+      <button class="chip" data-cat="alat">Perangkat</button>
+    </div>
+    <span class="count" id="count">37 layar</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid">
+
+    <div class="item" tabindex="0" data-cat="awal" data-file="01-login.html" data-name="Login masuk akun password biometrik fingerprint">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/01-login.html" title="Login" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">01</span><div><h3>Login</h3><p>Masuk &amp; Beranda</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="awal" data-file="02-main.html" data-name="beranda home dashboard rute omzet kpi printer">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/02-main.html" title="Beranda" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">02</span><div><h3>Beranda</h3><p>Masuk &amp; Beranda</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="03-persiapan.html" data-name="persiapan djo driver nopol km mulai odometer">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/03-persiapan.html" title="Persiapan" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">03</span><div><h3>Persiapan</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="04-jalur.html" data-name="pilih jalur djo rute outlet">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/04-jalur.html" title="Pilih Jalur" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">04</span><div><h3>Pilih Jalur</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="05-editkma.html" data-name="km mulai odometer awal">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/05-editkma.html" title="Km Mulai" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">05</span><div><h3>Km Mulai</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="06-editkmz.html" data-name="km selesai odometer akhir jarak">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/06-editkmz.html" title="Km Selesai" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">06</span><div><h3>Km Selesai</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="07-callsheet.html" data-name="callsheet sisa bon piutang komitmen download">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/07-callsheet.html" title="Callsheet" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">07</span><div><h3>Callsheet</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="08-distribusi.html" data-name="distribusi omzet komitmen brand rokok">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/08-distribusi.html" title="Distribusi" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">08</span><div><h3>Distribusi</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="09-ops.html" data-name="pengeluaran operasional bbm parkir">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/09-ops.html" title="Pengeluaran" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">09</span><div><h3>Pengeluaran</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="10-opsplus.html" data-name="tambah pengeluaran bbm nominal keterangan">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/10-opsplus.html" title="Tambah Pengeluaran" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">10</span><div><h3>Tambah Pengeluaran</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="11-hasil.html" data-name="hasil hari ini setoran tunai bg retur">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/11-hasil.html" title="Hasil Hari Ini" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">11</span><div><h3>Hasil Hari Ini</h3><p>Perjalanan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="12-jualplgn.html" data-name="kunjungan penjualan outlet pelanggan daftar">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/12-jualplgn.html" title="Kunjungan &amp; Penjualan" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">12</span><div><h3>Kunjungan &amp; Penjualan</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="13-jualkunj.html" data-name="kunjungan outlet detail jarak gps akurasi">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/13-jualkunj.html" title="Kunjungan" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">13</span><div><h3>Kunjungan</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="14-jualdetail.html" data-name="detail penjualan item total pembayaran">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/14-jualdetail.html" title="Detail Penjualan" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">14</span><div><h3>Detail Penjualan</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="15-jualrokok.html" data-name="jual rokok brand stepper total gps">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/15-jualrokok.html" title="Jual Rokok" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">15</span><div><h3>Jual Rokok</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="16-jualstokorokok.html" data-name="jual stoko stok rokok outlet">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/16-jualstokorokok.html" title="Jual Stoko" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">16</span><div><h3>Jual Stoko</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="17-jualstokodetail.html" data-name="stok outlet detail stok menipis">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/17-jualstokodetail.html" title="Stok Outlet" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">17</span><div><h3>Stok Outlet</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="18-jualsample.html" data-name="input sample gratis promosi">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/18-jualsample.html" title="Input Sample" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">18</span><div><h3>Input Sample</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="19-jualcangkangbeli.html" data-name="beli cangkang stepper harga">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/19-jualcangkangbeli.html" title="Beli Cangkang" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">19</span><div><h3>Beli Cangkang</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="20-jualtukarcangkang.html" data-name="tukar cangkang konversi">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/20-jualtukarcangkang.html" title="Tukar Cangkang" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">20</span><div><h3>Tukar Cangkang</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jual" data-file="21-jualreturkas.html" data-name="retur tunai limit tahun cukai">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/21-jualreturkas.html" title="Retur Tunai" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">21</span><div><h3>Retur Tunai</h3><p>Penjualan</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="22-bon.html" data-name="bon rokok sisa bon download upload">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/22-bon.html" title="Bon Rokok" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">22</span><div><h3>Bon Rokok</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="23-bonrokok.html" data-name="buat bon rokok brand stepper sisa jatah">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/23-bonrokok.html" title="Buat Bon Rokok" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">23</span><div><h3>Buat Bon Rokok</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="24-bonpiutang.html" data-name="bon nota piutang download upload">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/24-bonpiutang.html" title="Bon Nota Piutang" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">24</span><div><h3>Bon Nota Piutang</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="25-kembalipiut.html" data-name="kembali nota piutang upload">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/25-kembalipiut.html" title="Kembali Nota Piutang" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">25</span><div><h3>Kembali Nota Piutang</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="26-piutplgn.html" data-name="piutang pelanggan outlet total tagihan">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/26-piutplgn.html" title="Piutang Pelanggan" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">26</span><div><h3>Piutang Pelanggan</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="27-bayarbg.html" data-name="bayar transfer bg bank bca bri mandiri bni">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/27-bayarbg.html" title="Bayar via Transfer" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">27</span><div><h3>Bayar via Transfer</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="28-bayarcash.html" data-name="bayar tunai cash nota lunas">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/28-bayarcash.html" title="Bayar Tunai" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">28</span><div><h3>Bayar Tunai</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="bon" data-file="29-notapiutang.html" data-name="nota piutang receipt cetak print">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/29-notapiutang.html" title="Nota Piutang" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">29</span><div><h3>Nota Piutang</h3><p>Bon &amp; Piutang</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="outlet" data-file="30-moster.html" data-name="moster promo display outlet">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/30-moster.html" title="Moster" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">30</span><div><h3>Moster</h3><p>Promo &amp; Outlet</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="outlet" data-file="31-mosterrokok.html" data-name="input moster promo brand bonus">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/31-mosterrokok.html" title="Input Moster" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">31</span><div><h3>Input Moster</h3><p>Promo &amp; Outlet</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="outlet" data-file="32-regplgn.html" data-name="data outlet registrasi daftar pelanggan">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/32-regplgn.html" title="Data Outlet" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">32</span><div><h3>Data Outlet</h3><p>Promo &amp; Outlet</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="outlet" data-file="33-regnew.html" data-name="outlet baru registrasi pemilik gps">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/33-regnew.html" title="Outlet Baru" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">33</span><div><h3>Outlet Baru</h3><p>Promo &amp; Outlet</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="outlet" data-file="34-regedit.html" data-name="edit outlet verifikasi data pemilik">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/34-regedit.html" title="Edit Outlet" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">34</span><div><h3>Edit Outlet</h3><p>Promo &amp; Outlet</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="alat" data-file="35-devicelist.html" data-name="printer bluetooth perangkat pair rpp02n">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/35-devicelist.html" title="Printer Bluetooth" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">35</span><div><h3>Printer Bluetooth</h3><p>Perangkat</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="alat" data-file="36-cetak.html" data-name="cetak printer thermal 32 48 karakter test">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/36-cetak.html" title="Cetak" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">36</span><div><h3>Cetak</h3><p>Perangkat</p></div></div>
+    </div>
+
+    <div class="item" tabindex="0" data-cat="jalan" data-file="37-upload.html" data-name="upload data sinkronisasi online logout">
+      <div class="phone-wrap"><div class="screen-box"><iframe loading="lazy" src="screens/37-upload.html" title="Upload Data" scrolling="no"></iframe></div><div class="hovercue"><span>Buka layar <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></div>
+      <div class="meta"><span class="no">37</span><div><h3>Upload Data</h3><p>Perjalanan</p></div></div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <span><b>Prototipe interaktif.</b> Semua layar dapat diklik — navigasi antar layar berfungsi.</span>
+    <span class="sep"></span>
+    <a href="design-system.html" style="color:#8FA6FF;font-weight:600;text-decoration:none">Lihat design system →</a>
+  </div>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Pratinjau layar">
+  <div class="scrim" data-close></div>
+  <div class="modal-card">
+    <div class="modal-bar">
+      <h4 id="mtitle">Layar</h4>
+      <span class="sp"></span>
+      <a class="mbtn" id="mopen" href="#" target="_blank" rel="noopener">Tab baru <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <button class="mbtn" data-close type="button">Tutup <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="mphone" id="mphone"><iframe id="mframe" title="Pratinjau layar" src="about:blank"></iframe></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var grid = document.getElementById('grid');
+  var items = Array.prototype.slice.call(grid.querySelectorAll('.item'));
+  var q = document.getElementById('q');
+  var chips = document.getElementById('chips');
+  var count = document.getElementById('count');
+  var cat = 'all';
+
+  function apply(){
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(it){
+      var okCat = cat === 'all' || it.dataset.cat === cat;
+      var okQ = !term || (it.dataset.name + ' ' + it.textContent).toLowerCase().indexOf(term) > -1;
+      var vis = okCat && okQ;
+      it.style.display = vis ? '' : 'none';
+      if (vis) shown++;
+    });
+    count.textContent = shown + ' layar';
+    var empty = grid.querySelector('.empty');
+    if (!shown && !empty){
+      empty = document.createElement('div');
+      empty.className = 'empty';
+      empty.textContent = 'Tidak ada layar yang cocok. Coba kata kunci lain.';
+      grid.appendChild(empty);
+    } else if (shown && empty){ empty.remove(); }
+  }
+
+  q.addEventListener('input', apply);
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest('.chip');
+    if (!b) return;
+    cat = b.dataset.cat;
+    chips.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('on', c === b); });
+    apply();
+  });
+
+  /* Scale iframes to fit their cards */
+  function fit(){
+    items.forEach(function(it){
+      var box = it.querySelector('.screen-box');
+      if (!box) return;
+      var f = box.querySelector('iframe');
+      f.style.transform = 'scale(' + (box.clientWidth / 390) + ')';
+    });
+  }
+
+  /* Modal */
+  var modal = document.getElementById('modal');
+  var mframe = document.getElementById('mframe');
+  var mtitle = document.getElementById('mtitle');
+  var mopen = document.getElementById('mopen');
+  var mphone = document.getElementById('mphone');
+
+  function openModal(it){
+    var file = it.dataset.file;
+    var title = it.querySelector('h3').textContent;
+    mframe.src = 'screens/' + file;
+    mtitle.textContent = title;
+    mopen.href = 'screens/' + file;
+    modal.classList.add('open');
+    document.body.classList.add('locked');
+    resizeModal();
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.classList.remove('locked');
+    mframe.src = 'about:blank';
+  }
+  function resizeModal(){
+    if (!modal.classList.contains('open')) return;
+    var mw = 406, mh = 860;
+    var s = Math.min(1, (window.innerHeight - 140) / mh, (window.innerWidth - 40) / mw);
+    s = Math.max(.4, s);
+    mphone.style.transform = 'scale(' + s + ')';
+    mphone.style.margin = (-(1 - s) * mh / 2) + 'px ' + (-(1 - s) * mw / 2) + 'px';
+  }
+
+  items.forEach(function(it){
+    it.addEventListener('click', function(){ openModal(it); });
+    it.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(it); }
+    });
+  });
+  modal.addEventListener('click', function(e){
+    if (e.target.closest('[data-close]')) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeModal();
+  });
+
+  window.addEventListener('resize', function(){ fit(); resizeModal(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('load', fit);
+  fit();
+  apply();
+})();
+</script>
+</body>
+</html>

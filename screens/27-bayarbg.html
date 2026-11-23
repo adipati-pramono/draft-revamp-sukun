@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Bayar via Transfer — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="bayar-bg">
+  <header class="appbar">
+    <a class="iconbtn" href="26-piutplgn.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Bayar via Transfer</h1><p>Kios Berkah · OTL-0068</p></div>
+    <span class="spacer"></span>
+    <span class="badge rose">Overdue</span>
+  </header>
+
+  <main class="scroll">
+    <div class="card flat">
+      <div class="row" style="padding:0">
+        <span class="av c5">KB</span>
+        <div class="grow"><div class="t">Kios Berkah</div><div class="s">2 nota · jatuh tempo 18 Nov</div></div>
+        <div class="r"><div class="amt">Rp 1,2 jt</div><div class="sub">Total piutang</div></div>
+      </div>
+    </div>
+
+    <div class="label mt16">Bank pengirim</div>
+    <div class="grid2">
+      <div class="opt sel" style="padding:10px">
+        <span class="itile sm i-brand" style="font-size:9px;font-weight:800">BCA</span>
+        <div class="grow"><div class="t">BCA</div><div class="s">Transfer bank</div></div>
+        <span class="radio"></span>
+      </div>
+      <div class="opt" style="padding:10px">
+        <span class="itile sm i-sky" style="font-size:9px;font-weight:800">BRI</span>
+        <div class="grow"><div class="t">BRI</div><div class="s">Transfer bank</div></div>
+        <span class="radio"></span>
+      </div>
+      <div class="opt" style="padding:10px">
+        <span class="itile sm i-amber" style="font-size:9px;font-weight:800">MDR</span>
+        <div class="grow"><div class="t">Mandiri</div><div class="s">Transfer bank</div></div>
+        <span class="radio"></span>
+      </div>
+      <div class="opt" style="padding:10px">
+        <span class="itile sm i-rose" style="font-size:9px;font-weight:800">BNI</span>
+        <div class="grow"><div class="t">BNI</div><div class="s">Transfer bank</div></div>
+        <span class="radio"></span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="field">
+          <label class="label" for="nobg">No. BG <span class="hint">Maks 8 karakter</span></label>
+          <input class="input num" id="nobg" maxlength="8" value="88421102">
+        </div>
+        <div class="field">
+          <label class="label" for="nominal">Nominal transfer</label>
+          <div class="input-wrap">
+            <span class="ic" style="display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--muted)">Rp</span>
+            <input class="input num" id="nominal" style="padding-left:44px;font-weight:800" inputmode="numeric" value="1.200.000">
+          </div>
+        </div>
+        <div class="totalrow">
+          <span class="tl">Sisa setelah bayar</span>
+          <span class="tv">Rp 0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-green"><svg class="ic"><use href="#i-navigation"/></svg></span>
+          <div class="grow"><div class="t">Akurasi GPS ±9 m</div><div class="s">Terverifikasi di lokasi outlet</div></div>
+          <span class="badge green">Sesuai</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner info mt16">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Pastikan nominal transfer sesuai dengan sisa piutang outlet.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check-circle"/></svg>Konfirmasi Pembayaran</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

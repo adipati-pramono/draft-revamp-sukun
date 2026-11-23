@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Distribusi — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="distribusi">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Distribusi</h1><p>Komitmen vs realisasi</p></div>
+    <span class="spacer"></span>
+    <button class="iconbtn accent" type="button" aria-label="Refresh"><svg class="ic"><use href="#i-refresh"/></svg></button>
+  </header>
+
+  <main class="scroll">
+    <div class="amount-card">
+      <div class="label-cap">Omzet hari ini</div>
+      <div class="xl">Rp 8.420.000</div>
+      <div class="sub">84% dari target harian Rp 10.000.000</div>
+      <div class="progress mt12" style="background:rgba(255,255,255,.2)"><span style="width:84%;background:#fff"></span></div>
+      <div class="between mt8">
+        <span class="tiny" style="color:rgba(255,255,255,.72)">Realisasi</span>
+        <span class="tiny" style="color:rgba(255,255,255,.72)">EC 78%</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><svg class="ic"><use href="#i-bar-chart"/></svg>Komitmen per Brand</div>
+          <span class="badge brand">5 brand</span>
+        </div>
+        <div class="table-wrap">
+          <table class="ptable">
+            <thead><tr><th>Brand</th><th>Kmt</th><th>EC</th><th>Omzet</th></tr></thead>
+            <tbody>
+              <tr><td class="brand-name">DSS 234</td><td>120</td><td class="green">98</td><td>2.860.000</td></tr>
+              <tr><td class="brand-name">A Mild</td><td>100</td><td class="green">87</td><td>2.420.000</td></tr>
+              <tr><td class="brand-name">Surya Pro</td><td>90</td><td>74</td><td>1.980.000</td></tr>
+              <tr><td class="brand-name">Djarum Super</td><td>80</td><td>61</td><td>1.420.000</td></tr>
+              <tr><td class="brand-name">GG Mild</td><td>60</td><td class="rose">42</td><td>890.000</td></tr>
+              <tr class="total"><td>Total</td><td>450</td><td>78%</td><td>9.570.000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="banner info mt12">
+          <svg class="ic"><use href="#i-info"/></svg>
+          <span>Kmt = komitmen (bks), EC = effective call, Omzet dalam rupiah.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-teal"><svg class="ic"><use href="#i-trending"/></svg></span>
+          <div class="grow"><div class="t">Pencapaian terbaik</div><div class="s">DSS 234 · 98 dari 120 bks</div></div>
+          <span class="badge green">82%</span>
+        </div>
+        <div class="row">
+          <span class="itile i-rose"><svg class="ic"><use href="#i-alert"/></svg></span>
+          <div class="grow"><div class="t">Perlu perhatian</div><div class="s">GG Mild · baru 42 dari 60 bks</div></div>
+          <span class="badge rose">70%</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <div class="hint">Komitmen terakhir diunduh 07.12</div>
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-download"/></svg>Download Komitmen</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

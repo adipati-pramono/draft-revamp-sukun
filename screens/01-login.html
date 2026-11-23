@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Login — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app login-app" data-nav="none" data-screen="login">
+  <main class="scroll">
+    <div class="login-hero">
+      <div class="logo-mark">SWI<small>SALES</small></div>
+      <h1>Selamat datang kembali.</h1>
+      <p>Masuk untuk memulai rute, mencatat penjualan, dan menyelesaikan setoran hari ini.</p>
+    </div>
+
+    <div class="login-card">
+      <div class="field">
+        <label class="label" for="username">Username</label>
+        <div class="input-wrap">
+          <svg class="ic"><use href="#i-user"/></svg>
+          <input class="input" id="username" type="text" value="agus.susanto" autocomplete="username">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="password">Password <a class="hint" href="#">Lupa?</a></label>
+        <div class="input-wrap">
+          <svg class="ic"><use href="#i-lock"/></svg>
+          <input class="input" id="password" type="password" value="rahasia123" autocomplete="current-password">
+          <button class="tail" type="button" data-pw-toggle aria-label="Tampilkan password">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="login-meta">
+        <span class="flex"><button class="switch on" type="button" aria-label="Ingat saya"></button><span>Ingat saya</span></span>
+        <span class="tiny faint">v11.0.0</span>
+      </div>
+
+      <a class="btn primary block" href="02-main.html">
+        Masuk
+        <svg class="ic"><use href="#i-arrow-right"/></svg>
+      </a>
+      <div class="or">atau</div>
+      <button class="biometric" type="button">
+        <svg class="ic"><use href="#i-fingerprint"/></svg>
+        Masuk dengan biometrik
+      </button>
+    </div>
+
+    <div class="login-foot">
+      <b>PT. SUKUN WARTONO INDONESIA</b><br>
+      Sales Application · Android v11.0
+    </div>
+  </main>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

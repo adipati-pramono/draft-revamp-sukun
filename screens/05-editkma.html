@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Km Mulai — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="edit-kma">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Km Mulai</h1><p>Odometer awal hari ini</p></div>
+  </header>
+
+  <main class="scroll">
+    <div class="card flat">
+      <div class="row">
+        <span class="itile i-brand"><svg class="ic"><use href="#i-map"/></svg></span>
+        <div class="grow"><div class="t">DJO-01 · Malang Kota</div><div class="s">SUGIANTO · N 9012 XY</div></div>
+        <span class="badge green">Berjalan</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="label">Odometer saat ini <span class="hint">km</span></div>
+        <input class="input money-input" inputmode="numeric" value="45.210" aria-label="Km mulai">
+        <div class="hintline">Diperbarui hari ini pukul 06.58</div>
+        <div class="mt16">
+          <div class="label">Penyesuaian cepat</div>
+          <div class="pill-row">
+            <button class="chipbtn" type="button">+1 km</button>
+            <button class="chipbtn" type="button">+10 km</button>
+            <button class="chipbtn" type="button">+100 km</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner warn mt16">
+      <svg class="ic"><use href="#i-alert"/></svg>
+      <span>Mengubah km mulai dapat memengaruhi perhitungan jarak tempuh, BBM, dan laporan setoran.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Km Mulai</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

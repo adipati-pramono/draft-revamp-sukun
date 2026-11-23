@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Km Selesai — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="edit-kmz">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Km Selesai</h1><p>Odometer akhir hari ini</p></div>
+  </header>
+
+  <main class="scroll">
+    <div class="card flat">
+      <div class="row">
+        <span class="itile i-teal"><svg class="ic"><use href="#i-map"/></svg></span>
+        <div class="grow"><div class="t">DJO-01 · Malang Kota</div><div class="s">Km mulai 45.210 · 12 kunjungan</div></div>
+        <span class="badge green">Selesai</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="label">Odometer akhir <span class="hint">km</span></div>
+        <input class="input money-input" inputmode="numeric" value="45.268" aria-label="Km selesai">
+        <div class="hintline">Terakhir diubah pukul 16.35</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="between">
+          <div>
+            <div class="label-cap">Perkiraan jarak tempuh</div>
+            <div class="big mt6">58 <span class="tiny muted">km</span></div>
+          </div>
+          <div class="ring" style="--p:72"><span>72%</span></div>
+        </div>
+        <div class="progress mt12"><span style="width:72%"></span></div>
+        <div class="between mt8">
+          <span class="tiny muted">Km mulai 45.210</span>
+          <span class="tiny muted">Km selesai 45.268</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner info mt16">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Jarak tempuh dipakai untuk rekap BBM dan laporan akhir hari.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Km Selesai</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

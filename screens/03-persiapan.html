@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Persiapan — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="persiapan">
+  <header class="appbar">
+    <a class="iconbtn" href="02-main.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Persiapan Hari</h1><p>Langkah 1 dari 2 · Rute &amp; kendaraan</p></div>
+  </header>
+
+  <main class="scroll">
+    <div class="steps"><span class="st now"></span><span class="st"></span></div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><svg class="ic"><use href="#i-map"/></svg>Rute &amp; Kendaraan</div>
+      </div>
+
+      <div class="label">Pilih DJO</div>
+      <div class="opts mb12">
+        <div class="opt sel">
+          <span class="radio"></span>
+          <div class="grow">
+            <div class="t">DJO-01 · Malang Kota</div>
+            <div class="s">42 outlet · 12 sudah dikunjungi</div>
+          </div>
+          <span class="badge green">Aktif</span>
+        </div>
+        <div class="opt">
+          <span class="radio"></span>
+          <div class="grow">
+            <div class="t">DJO-02 · Batu</div>
+            <div class="s">28 outlet · belum dimulai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="driver">Driver</label>
+        <div class="select-wrap">
+          <select class="select" id="driver">
+            <option>SUGIANTO</option>
+            <option>BAMBANG W.</option>
+            <option>HARIYANTO</option>
+          </select>
+          <svg class="ic"><use href="#i-chevron-down"/></svg>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nopol">No Polisi</label>
+        <div class="select-wrap">
+          <select class="select" id="nopol">
+            <option>N 9012 XY</option>
+            <option>N 8841 AB</option>
+            <option>N 7712 CD</option>
+          </select>
+          <svg class="ic"><use href="#i-chevron-down"/></svg>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="kma">Km Mulai <span class="hint">Odometer kendaraan</span></label>
+        <div class="input-wrap">
+          <svg class="ic"><use href="#i-tachometer"/></svg>
+          <input class="input num" id="kma" inputmode="numeric" value="45.210">
+        </div>
+        <div class="hintline">Pastikan angka sesuai odometer sebelum berangkat.</div>
+      </div>
+    </div>
+
+    <div class="banner info mt16">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Km mulai dipakai untuk menghitung jarak tempuh dan klaim BBM hari ini.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <div class="hint">Data dapat diubah sebelum penjualan pertama.</div>
+    <a class="btn primary block" href="04-jalur.html"><svg class="ic"><use href="#i-check"/></svg>Simpan &amp; Mulai Kerja</a>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

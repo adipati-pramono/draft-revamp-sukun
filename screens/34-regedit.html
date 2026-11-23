@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Edit Outlet — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="reg-edit">
+  <header class="appbar">
+    <a class="iconbtn" href="32-regplgn.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Edit Outlet</h1><p>Toko Sinar Jaya · OTL-0042</p></div>
+    <span class="spacer"></span>
+    <span class="badge green"><svg class="ic"><use href="#i-check-circle"/></svg>Terverifikasi</span>
+  </header>
+
+  <main class="scroll">
+    <div class="banner success">
+      <svg class="ic"><use href="#i-check-circle"/></svg>
+      <span>Data outlet sudah diverifikasi admin pada 05 Nov 2026.</span>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head"><div class="card-title"><svg class="ic"><use href="#i-store"/></svg>Informasi Outlet</div></div>
+        <div class="field">
+          <label class="label" for="kat">Kategori</label>
+          <div class="select-wrap">
+            <select class="select" id="kat"><option>Retail</option><option>Grosir</option><option>Stoko</option></select>
+            <svg class="ic"><use href="#i-chevron-down"/></svg>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="nama">Nama outlet</label>
+          <input class="input" id="nama" value="Toko Sinar Jaya">
+        </div>
+        <div class="field">
+          <label class="label" for="alamat">Alamat outlet</label>
+          <input class="input" id="alamat" value="Jl. Soekarno Hatta 12, RT 02 RW 05">
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label class="label" for="kab">Kab. / Kota</label>
+            <input class="input" id="kab" value="Kota Malang">
+          </div>
+          <div class="field">
+            <label class="label" for="kec">Kecamatan</label>
+            <input class="input" id="kec" value="Lowokwaru">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label class="label" for="desa">Kel. / Desa</label>
+          <input class="input" id="desa" value="Tlogomas">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head"><div class="card-title"><svg class="ic"><use href="#i-user"/></svg>Pemilik</div></div>
+        <div class="field">
+          <label class="label" for="pemilik">Nama pemilik</label>
+          <input class="input" id="pemilik" value="H. Ahmad">
+        </div>
+        <div class="field">
+          <label class="label" for="almtpem">Alamat pemilik</label>
+          <input class="input" id="almtpem" value="Jl. Soekarno Hatta 12, Malang">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label class="label" for="telp">No. telepon</label>
+          <div class="input-wrap">
+            <svg class="ic"><use href="#i-phone"/></svg>
+            <input class="input num" id="telp" value="0812-3456-7890">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><svg class="ic"><use href="#i-navigation"/></svg>Lokasi Outlet</div>
+          <span class="badge green">±8 m</span>
+        </div>
+        <div class="drows">
+          <div class="dr"><span class="k"><svg class="ic"><use href="#i-pin"/></svg>Latitude</span><span class="v mono">-7.966620</span></div>
+          <div class="dr"><span class="k"><svg class="ic"><use href="#i-pin"/></svg>Longitude</span><span class="v mono">112.632630</span></div>
+        </div>
+        <button class="btn ghost block mt12" type="button"><svg class="ic"><use href="#i-navigation"/></svg>Perbarui Lokasi</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <div class="hint">Perubahan data outlet akan disinkronkan saat upload.</div>
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Perubahan</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

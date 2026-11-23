@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Outlet Baru — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="reg-new">
+  <header class="appbar">
+    <a class="iconbtn" href="32-regplgn.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Outlet Baru</h1><p>Daftarkan pelanggan</p></div>
+    <span class="spacer"></span>
+    <span class="badge teal">Baru</span>
+  </header>
+
+  <main class="scroll">
+    <div class="banner info">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Gunakan hanya teks dan angka, serta tanda , . - untuk alamat dan telepon.</span>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head"><div class="card-title"><svg class="ic"><use href="#i-store"/></svg>Informasi Outlet</div></div>
+        <div class="field">
+          <label class="label" for="kat">Kategori</label>
+          <div class="select-wrap">
+            <select class="select" id="kat">
+              <option>Retail</option>
+              <option>Grosir</option>
+              <option>Stoko</option>
+            </select>
+            <svg class="ic"><use href="#i-chevron-down"/></svg>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="nama">Nama outlet</label>
+          <input class="input" id="nama" value="Sinar Jaya TK">
+        </div>
+        <div class="field">
+          <label class="label" for="alamat">Alamat outlet</label>
+          <input class="input" id="alamat" value="Jl. Soekarno Hatta 12, RT 02 RW 05">
+        </div>
+        <div class="field">
+          <label class="label" for="kab">Kab. / Kota</label>
+          <div class="select-wrap">
+            <select class="select" id="kab">
+              <option>Kota Malang</option>
+              <option>Kab. Malang</option>
+              <option>Kota Batu</option>
+            </select>
+            <svg class="ic"><use href="#i-chevron-down"/></svg>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field" style="margin-bottom:0">
+            <label class="label" for="kec">Kecamatan</label>
+            <div class="select-wrap">
+              <select class="select" id="kec"><option>Lowokwaru</option><option>Blimbing</option></select>
+              <svg class="ic"><use href="#i-chevron-down"/></svg>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label class="label" for="desa">Kel. / Desa</label>
+            <div class="select-wrap">
+              <select class="select" id="desa"><option>Tlogomas</option><option>Sumbersari</option></select>
+              <svg class="ic"><use href="#i-chevron-down"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head"><div class="card-title"><svg class="ic"><use href="#i-user"/></svg>Pemilik</div></div>
+        <div class="field">
+          <label class="label" for="pemilik">Nama pemilik</label>
+          <input class="input" id="pemilik" value="H. Ahmad">
+        </div>
+        <div class="field">
+          <label class="label" for="almtpem">Alamat pemilik</label>
+          <input class="input" id="almtpem" value="Jl. Soekarno Hatta 12, Malang">
+        </div>
+        <div class="field">
+          <label class="label" for="telp">No. telepon</label>
+          <div class="input-wrap">
+            <svg class="ic"><use href="#i-phone"/></svg>
+            <input class="input num" id="telp" inputmode="tel" value="0812-3456-7890">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head"><div class="card-title"><svg class="ic"><use href="#i-truck"/></svg>Belanja Dari</div></div>
+        <div class="select-wrap">
+          <select class="select"><option>Distributor</option><option>Agen</option></select>
+          <svg class="ic"><use href="#i-chevron-down"/></svg>
+        </div>
+        <div class="row mt12" style="padding-bottom:0">
+          <span class="itile i-green"><svg class="ic"><use href="#i-navigation"/></svg></span>
+          <div class="grow"><div class="t">Lokasi terdeteksi</div><div class="s">Akurasi ±10 m · Lowokwaru, Malang</div></div>
+          <button class="btn sm soft" type="button">Ambil</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Outlet</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

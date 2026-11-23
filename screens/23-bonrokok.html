@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Buat Bon Rokok — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="bon-rokok">
+  <header class="appbar">
+    <a class="iconbtn" href="22-bon.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Buat Bon Rokok</h1><p>Sisa jatah 24 bks</p></div>
+    <span class="spacer"></span>
+    <span class="badge amber">Bon</span>
+  </header>
+
+  <main class="scroll">
+    <div class="banner info">
+      <svg class="ic"><use href="#i-info"/></svg>
+      <span>Bon yang dibuat malam ini akan di-ACC oleh distributor pada sinkronisasi berikutnya.</span>
+    </div>
+
+    <div class="label mt16">Brand</div>
+    <div class="brandsel">
+      <span class="bmark">DSS<br>234</span>
+      <div class="grow">
+        <div class="bt">Dji Sam Soe 234</div>
+        <div class="bs">Rp 23.000 / bks · Sisa bon 24 bks</div>
+      </div>
+      <svg class="ic chev"><use href="#i-chevron-down"/></svg>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="between mb12">
+          <div class="card-title"><svg class="ic"><use href="#i-file"/></svg>Jumlah bon</div>
+          <span class="badge amber">Maks 24 bks</span>
+        </div>
+        <div class="stepper">
+          <button class="step-btn" type="button" data-step="-"><svg class="ic"><use href="#i-minus"/></svg></button>
+          <div class="step-val" data-qty>4<small>bks</small></div>
+          <button class="step-btn" type="button" data-step="+"><svg class="ic"><use href="#i-plus"/></svg></button>
+        </div>
+        <div class="totalrow mt12">
+          <span class="tl">Total bon</span>
+          <span class="tv" data-total data-price="23000">Rp 92.000</span>
+        </div>
+        <div class="hintline">Sisa jatah setelah bon ini: 20 bks.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card flat">
+        <div class="row">
+          <span class="itile i-brand"><svg class="ic"><use href="#i-truck"/></svg></span>
+          <div class="grow"><div class="t">Distributor · DJO-01</div><div class="s">ACC terakhir hari ini 07.12</div></div>
+          <span class="badge green">Siap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner warn mt16">
+      <svg class="ic"><use href="#i-alert"/></svg>
+      <span>Pastikan jumlah sesuai fisik bon sebelum menyimpan.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Bon</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390,initial-scale=1,viewport-fit=cover">
+<title>Tambah Pengeluaran — SWI Sales 2.0</title>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body class="screen">
+<div class="app" data-nav="none" data-screen="ops-plus">
+  <header class="appbar">
+    <a class="iconbtn" href="09-ops.html" aria-label="Kembali"><svg class="ic"><use href="#i-back"/></svg></a>
+    <div class="appbar-t"><h1>Tambah Pengeluaran</h1><p>Catat biaya operasional</p></div>
+  </header>
+
+  <main class="scroll">
+    <div class="chips">
+      <button class="chip active" type="button"><svg class="ic"><use href="#i-droplet"/></svg>BBM</button>
+      <button class="chip" type="button"><svg class="ic"><use href="#i-car"/></svg>Tol</button>
+      <button class="chip" type="button"><svg class="ic"><use href="#i-pin"/></svg>Parkir</button>
+      <button class="chip" type="button"><svg class="ic"><use href="#i-coffee"/></svg>Konsumsi</button>
+      <button class="chip" type="button"><svg class="ic"><use href="#i-more"/></svg>Lainnya</button>
+    </div>
+
+    <div class="card">
+      <div class="label">Nominal <span class="hint">Rupiah</span></div>
+      <input class="input money-input" inputmode="numeric" value="95.000" aria-label="Nominal pengeluaran">
+
+      <div class="field mt16">
+        <label class="label" for="ket">Keterangan</label>
+        <input class="input" id="ket" type="text" value="Isi Pertalite SPBU Karanglo">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title"><svg class="ic"><use href="#i-droplet"/></svg>Detail BBM</div>
+          <span class="badge green">Terhubung odometer</span>
+        </div>
+        <div class="grid2">
+          <div class="field" style="margin-bottom:0">
+            <label class="label" for="kmisi">Km saat isi</label>
+            <input class="input num" id="kmisi" inputmode="numeric" value="45.245">
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label class="label" for="liter">Jumlah liter</label>
+            <input class="input num" id="liter" inputmode="decimal" value="8,5">
+          </div>
+        </div>
+        <div class="hintline">Odometer terakhir tercatat 45.268 km.</div>
+      </div>
+    </div>
+
+    <div class="banner warn mt16">
+      <svg class="ic"><use href="#i-alert"/></svg>
+      <span>Periksa nominal sebelum menyimpan. Data pengeluaran langsung masuk ke laporan.</span>
+    </div>
+  </main>
+
+  <div class="ctabar">
+    <button class="btn primary block" type="button"><svg class="ic"><use href="#i-check"/></svg>Simpan Pengeluaran</button>
+  </div>
+</div>
+<script src="../assets/sprite.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
