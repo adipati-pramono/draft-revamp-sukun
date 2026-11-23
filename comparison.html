@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Komparasi Lama vs Revamp — SWI Sales 2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070B18; --panel:#0C1224; --panel-2:#111A31; --line:rgba(148,163,184,.14);
+    --ink:#F2F5FF; --muted:#94A3B8; --faint:#64748B;
+    --brand:#4A67E0; --brand-2:#7C93F2; --teal:#0FA98E;
+    --grad:linear-gradient(135deg,#4A67E0 0%,#2E4BC6 50%,#16296B 100%);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  button,input{font-family:inherit}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+
+  header.top{position:sticky;top:0;z-index:40;background:rgba(7,11,24,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .top-in{display:flex;align-items:center;gap:14px;height:66px}
+  .brandmark{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(74,103,224,.35);flex:none}
+  .brandmark svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .top-in b{font-size:15px;letter-spacing:-.2px}
+  .top-in b span{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0}
+  .top-nav{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .top-nav a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:9px 14px;border-radius:10px}
+  .top-nav a:hover{color:#fff;background:rgba(148,163,184,.1)}
+  .top-nav a.cta{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(74,103,224,.3)}
+
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:'';position:absolute;inset:-40% -10% auto;height:560px;background:radial-gradient(50% 60% at 70% 30%, rgba(74,103,224,.38), transparent 70%),radial-gradient(45% 55% at 15% 10%, rgba(15,169,142,.16), transparent 70%);pointer-events:none}
+  .hero-in{position:relative;padding:58px 0 40px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-2);background:rgba(74,103,224,.12);border:1px solid rgba(124,147,242,.28);padding:7px 13px;border-radius:999px}
+  .kicker i{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.14)}
+  h1{margin:20px 0 12px;font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-.035em;font-weight:800;max-width:900px}
+  h1 em{font-style:normal;background:linear-gradient(100deg,#8FA6FF,#4A67E0 55%,#25C2A6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{max-width:680px;color:var(--muted);font-size:16px;line-height:1.65}
+  .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .stat{background:rgba(17,26,49,.72);border:1px solid var(--line);border-radius:16px;padding:13px 18px;min-width:130px}
+  .stat b{display:block;font-size:23px;letter-spacing:-.02em}
+  .stat span{font-size:11.5px;color:var(--muted);font-weight:500}
+  .stat.accent b{color:#7FE7D2}
+
+  .toolbar{position:sticky;top:66px;z-index:30;background:rgba(7,11,24,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:14px 0}
+  .toolbar-in{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .search{position:relative;flex:1;min-width:220px;max-width:340px}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:none;stroke:var(--faint);stroke-width:2;stroke-linecap:round}
+  .search input{width:100%;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:0 14px 0 39px;font-size:13.5px;outline:none}
+  .search input::placeholder{color:var(--faint)}
+  .search input:focus{border-color:rgba(124,147,242,.5);box-shadow:0 0 0 3px rgba(74,103,224,.14)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:rgba(17,26,49,.6);color:var(--muted);height:34px;padding:0 14px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.16s ease}
+  .chip:hover{color:#fff;border-color:rgba(148,163,184,.3)}
+  .chip.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 6px 16px rgba(74,103,224,.28)}
+  .count{margin-left:auto;font-size:12.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:24px;padding:34px 0 30px}
+  .cmp{outline:none;cursor:pointer}
+  .pair{display:grid;grid-template-columns:1fr 22px 1fr;gap:6px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:10px;background:linear-gradient(160deg,rgba(26,36,64,.55),rgba(11,17,34,.7));transition:border-color .2s,box-shadow .25s,transform .25s}
+  .cmp:hover .pair,.cmp:focus-visible .pair{border-color:rgba(124,147,242,.5);box-shadow:0 18px 44px rgba(0,0,0,.45);transform:translateY(-3px)}
+  .shot{margin:0;min-width:0}
+  .shot figcaption{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;padding:0 2px}
+  .shot.new figcaption{color:var(--brand-2)}
+  .shot .img{border-radius:12px;overflow:hidden;border:1px solid rgba(148,163,184,.16);background:#0B1122;position:relative}
+  .shot.new .img{border-color:rgba(124,147,242,.4);box-shadow:0 0 0 2px rgba(74,103,224,.12)}
+  .shot img{display:block;width:100%;aspect-ratio:1080/2340;object-fit:cover;object-position:top center}
+  .arrow{display:grid;place-items:center;color:var(--faint)}
+  .arrow svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cmp-meta{display:flex;gap:10px;padding:12px 4px 0;align-items:flex-start}
+  .no{font-size:11px;font-weight:700;color:var(--faint);background:rgba(148,163,184,.1);border-radius:7px;padding:3px 7px;margin-top:1px;font-variant-numeric:tabular-nums}
+  .cmp-meta h3{font-size:14px;font-weight:700;letter-spacing:-.15px;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .cmp-meta h3 .mod{font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--brand-2);background:rgba(74,103,224,.14);border:1px solid rgba(124,147,242,.22);padding:2px 7px;border-radius:99px}
+  .cmp-meta p{margin:3px 0 0;font-size:11.5px;color:var(--faint);line-height:1.5}
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:70px 0;border:1px dashed var(--line);border-radius:20px;background:rgba(17,26,49,.35)}
+  .note{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--muted);font-size:13px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .note a{color:#8FA6FF;font-weight:600;text-decoration:none}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:18px}
+  .modal.open{display:grid}
+  .scrim{position:absolute;inset:0;background:rgba(3,6,14,.8);backdrop-filter:blur(8px)}
+  .cmp-modal{position:relative;z-index:1;width:min(980px,100%);max-height:94vh;overflow:auto;background:#0B1122;border:1px solid rgba(148,163,184,.2);border-radius:24px;padding:20px;box-shadow:0 40px 100px rgba(0,0,0,.7)}
+  .cmp-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+  .cmp-head h4{margin:0;font-size:17px;font-weight:800;letter-spacing:-.3px}
+  .cmp-head .sub{font-size:11.5px;color:var(--faint);margin-top:2px}
+  .cmp-head .sp{flex:1}
+  .mbtn{border:1px solid rgba(148,163,184,.25);background:rgba(17,26,49,.9);color:#fff;border-radius:10px;height:36px;padding:0 13px;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none;white-space:nowrap}
+  .mbtn:hover{background:rgba(148,163,184,.16)}
+  .mbtn.primary{background:var(--grad);border-color:transparent}
+  .mbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cmp-body{display:flex;gap:24px;align-items:flex-start}
+  .stage{position:relative;flex:none;height:min(68vh,700px);aspect-ratio:1080/2340;border-radius:18px;overflow:hidden;border:1px solid rgba(148,163,184,.22);background:#0B1122;--p:50%}
+  .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .stage img.old{filter:saturate(.85) contrast(.98)}
+  .stage img.new{clip-path:inset(0 0 0 var(--p))}
+  .stage .line{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:rgba(255,255,255,.85);box-shadow:0 0 0 1px rgba(7,11,24,.25);pointer-events:none}
+  .stage .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;color:#0B1437;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .stage .knob svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .stage .tag{position:absolute;top:10px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:99px;backdrop-filter:blur(6px)}
+  .stage .tag.l{left:10px;background:rgba(7,11,24,.62);color:#CBD5E1}
+  .stage .tag.r{right:10px;background:rgba(74,103,224,.86);color:#fff}
+  .info{flex:1;min-width:0;padding-top:2px}
+  .info .lab{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .info h5{margin:0 0 8px;font-size:18px;font-weight:800;letter-spacing:-.35px}
+  .info p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.65}
+  .info .row{display:flex;gap:10px;font-size:12px;color:var(--muted);padding:9px 0;border-top:1px solid var(--line)}
+  .info .row b{color:var(--ink);font-weight:600}
+  .control{display:flex;align-items:center;gap:12px;margin:2px 0 10px}
+  .control span{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+  .control input{flex:1;accent-color:var(--brand-2);cursor:ew-resize}
+  .hint{text-align:center;font-size:11px;color:var(--faint);margin-top:8px}
+  body.locked{overflow:hidden}
+
+  @media (max-width:820px){
+    .cmp-body{flex-direction:column;align-items:center}
+    .stage{height:min(60vh,520px);width:auto}
+    .info{width:100%}
+    .cmp-modal{padding:16px}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px}
+    .hero-in{padding:42px 0 32px}
+    .top-nav a:not(.cta){display:none}
+    .count{display:none}
+    .grid{grid-template-columns:1fr}
+    .cmp-meta p{font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <span class="brandmark"><svg viewBox="0 0 24 24"><path d="M3 17V7l6 5 3-5 3 5 6-5v10"/><path d="M3 20h18"/></svg></span>
+    <b>SWI Sales 2.0<span>Komparasi · Lama vs Revamp</span></b>
+    <nav class="top-nav">
+      <a href="index.html">Galeri Layar</a>
+      <a href="design-system.html">Design System</a>
+      <a class="cta" href="screens/01-login.html">Buka Prototipe</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <span class="kicker"><i></i>Before / After · 37 Layar</span>
+    <h1>Alur sama,<br>pengalaman yang <em>jauh lebih ringan</em>.</h1>
+    <p class="lede">Bandingkan tampilan APK lama dengan draft revamp. Setiap layar mempertahankan alur dan datanya, dengan hierarki, kontras, dan target sentuh yang diperbaiki.</p>
+    <div class="stats">
+      <div class="stat"><b>37</b><span>Pasangan layar</span></div>
+      <div class="stat accent"><b>100%</b><span>Field &amp; alur dipertahankan</span></div>
+      <div class="stat"><b>2</b><span>Versi berdampingan</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="wrap toolbar-in">
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Cari layar atau perubahan…" aria-label="Cari layar">
+    </label>
+    <div class="chips" id="chips">
+      <button class="chip on" data-cat="all">Semua</button>
+      <button class="chip" data-cat="awal">Masuk &amp; Beranda</button>
+      <button class="chip" data-cat="jalan">Perjalanan</button>
+      <button class="chip" data-cat="jual">Penjualan</button>
+      <button class="chip" data-cat="bon">Bon &amp; Piutang</button>
+      <button class="chip" data-cat="outlet">Promo &amp; Outlet</button>
+      <button class="chip" data-cat="alat">Perangkat</button>
+    </div>
+    <span class="count" id="count">37 perbandingan</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+  <div class="note">
+    <span><b style="color:#F2F5FF">Tips:</b> klik kartu untuk membuka pembanding geser (slider) berukuran penuh.</span>
+    <span class="sp" style="flex:1"></span>
+    <a href="index.html">Lihat galeri revamp →</a>
+  </div>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Perbandingan layar">
+  <div class="scrim" data-close></div>
+  <div class="cmp-modal">
+    <div class="cmp-head">
+      <div>
+        <h4 id="mtitle">Layar</h4>
+        <div class="sub" id="msub">Versi lama vs draft revamp</div>
+      </div>
+      <span class="sp"></span>
+      <a class="mbtn primary" id="mopen" href="#" target="_blank" rel="noopener">Buka layar revamp <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <button class="mbtn" data-close type="button">Tutup <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="control">
+      <span>Lama</span>
+      <input id="range" type="range" min="0" max="100" value="50" aria-label="Geser pembanding">
+      <span>Revamp</span>
+    </div>
+    <div class="hint">Geser untuk membandingkan. Tekan Esc untuk menutup.</div>
+    <div class="cmp-body">
+      <div class="stage" id="stage">
+        <img class="old" id="imgOld" alt="Versi lama">
+        <img class="new" id="imgNew" alt="Draft revamp">
+        <span class="tag l">Lama</span>
+        <span class="tag r">Revamp</span>
+        <div class="line"><span class="knob"><svg viewBox="0 0 24 24"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></svg></span></div>
+      </div>
+      <aside class="info">
+        <div class="lab">Perubahan utama</div>
+        <h5 id="mtitle2"></h5>
+        <p id="mdesc"></p>
+        <div class="row"><b>Alur</b><span id="mflow"></span></div>
+        <div class="row"><b>Data &amp; field</b><span>Dipertahankan dari layout asli</span></div>
+        <div class="row"><b>Fokus revamp</b><span>Hierarki, kontras, target sentuh, konsistensi</span></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var S = [
+    ['01','01-Login','Login','awal','Masuk & Beranda','Layar penuh gradien, input besar, toggle sandi, dan login biometrik.','Login'],
+    ['02','02-Main','Beranda','awal','Masuk & Beranda','Hero sapaan, kartu rute dan KPI yang langsung terlihat, aksi cepat 4 tombol, dan kartu tidak lagi terpotong header.','Beranda'],
+    ['03','03-Persiapan','Persiapan Hari','jalan','Perjalanan','Stepper progres, pilihan DJO berbentuk kartu, dan input odometer besar.','Persiapan'],
+    ['04','04-Jalur','Pilih Jalur','jalan','Perjalanan','Pencarian di atas dan kartu radio DJO dengan info outlet yang lengkap.','Pemilihan rute'],
+    ['05','05-EditKma','Km Mulai','jalan','Perjalanan','Input nominal besar dengan chip angka cepat dan validasi odometer.','Input odometer'],
+    ['06','06-EditKmz','Km Selesai','jalan','Perjalanan','Ring jarak tempuh dan selisih km yang dihitung otomatis.','Input odometer'],
+    ['07','07-Callsheet','Callsheet','jalan','Perjalanan','Ring sisa bon, rincian piutang, dan CTA unduh komitmen.','Persiapan kunjungan'],
+    ['08','08-Distribusi','Distribusi','jalan','Perjalanan','Kartu omzet dengan progres, tabel brand, dan sorotan brand terbaik.','Target distribusi'],
+    ['09','09-Ops','Pengeluaran','jalan','Perjalanan','Total pengeluaran menonjol, daftar biaya ringkas, dan FAB tambah.','Biaya operasional'],
+    ['10','10-OpsPlus','Tambah Pengeluaran','jalan','Perjalanan','Chip jenis biaya, input nominal, dan detail BBM.','Biaya operasional'],
+    ['11','11-Hasil','Hasil Hari Ini','jalan','Perjalanan','Hero total setoran, rincian tunai/BG/piutang, dan CTA upload.','Rekap setoran'],
+    ['12','12-JualPlgn','Kunjungan & Penjualan','jual','Penjualan','Statistik 4 status di atas dan kartu outlet dengan progres kunjungan.','Daftar kunjungan'],
+    ['13','13-JualKunj','Kunjungan','jual','Penjualan','Peta lokasi, akurasi GPS, dan satu CTA simpan kunjungan.','Kunjungan outlet'],
+    ['14','14-JualDetail','Detail Penjualan','jual','Penjualan','Tab item, total menyatu, dan pilihan pembayaran yang jelas.','Transaksi'],
+    ['15','15-JualRokok','Jual Rokok','jual','Penjualan','Pemilih brand, stepper jumlah, dan total harga otomatis.','Transaksi'],
+    ['16','16-JualStokoRokok','Jual Stoko','jual','Penjualan','Daftar stok brand dengan peringatan stok menipis.','Stok outlet'],
+    ['17','17-JualStokoDetail','Stok Outlet','jual','Penjualan','Detail stok per brand dan riwayat penjualan outlet.','Stok outlet'],
+    ['18','18-JualSample','Input Sample','jual','Penjualan','Input sample cepat dengan stepper dan catatan.','Sample'],
+    ['19','19-JualCangkangBeli','Beli Cangkang','jual','Penjualan','Stepper jumlah dengan harga otomatis.','Cangkang'],
+    ['20','20-JualTukarCangkang','Tukar Cangkang','jual','Penjualan','Visual konversi 20:1 dan hasil tukar real-time.','Cangkang'],
+    ['21','21-JualReturKas','Retur Tunai','jual','Penjualan','Limit retur, tahun cukai tersegmentasi, dan total otomatis.','Retur'],
+    ['22','22-Bon','Bon Rokok','bon','Bon & Piutang','Banner sukses, ring sisa bon, dan aksi unduh/unggah.','Bon'],
+    ['23','23-BonRokok','Buat Bon Rokok','bon','Bon & Piutang','Pemilih brand, stepper, dan sisa jatah yang terlihat.','Bon'],
+    ['24','24-BonPiutang','Bon Nota Piutang','bon','Bon & Piutang','Aksi unduh/unggah dan daftar nota piutang yang rapi.','Nota piutang'],
+    ['25','25-KembaliPiut','Kembali Nota Piutang','bon','Bon & Piutang','Pencarian nota dan kartu unggah bukti.','Nota piutang'],
+    ['26','26-PiutPlgn','Piutang Pelanggan','bon','Bon & Piutang','Hero total piutang, statistik overdue, dan kartu outlet.','Piutang'],
+    ['27','27-BayarBG','Bayar via Transfer','bon','Bon & Piutang','Kartu bank, No. BG, dan ringkasan pembayaran.','Pembayaran'],
+    ['28','28-BayarCash','Bayar Tunai','bon','Bon & Piutang','Checkbox nota, total dipilih, dan switch lunas.','Pembayaran'],
+    ['29','29-NotaPiutang','Nota Piutang','bon','Bon & Piutang','Pratinjau struk dan cetak ASLI/COPY.','Cetak'],
+    ['30','30-Moster','Moster','outlet','Promo & Outlet','Kartu promo violet, progres, dan CTA input moster.','Promo'],
+    ['31','31-MosterRokok','Input Moster','outlet','Promo & Outlet','Brand promo, stepper, dan pratinjau bonus.','Promo'],
+    ['32','32-RegPlgn','Data Outlet','outlet','Promo & Outlet','Statistik outlet, filter kategori, dan FAB tambah.','Data outlet'],
+    ['33','33-RegNew','Outlet Baru','outlet','Promo & Outlet','Form bertahap, kartu pemilik, dan titik GPS.','Data outlet'],
+    ['34','34-RegEdit','Edit Outlet','outlet','Promo & Outlet','Form terisi, badge terverifikasi, dan perbarui lokasi.','Data outlet'],
+    ['35','35-DeviceList','Printer Bluetooth','alat','Perangkat','Radar pemindaian, daftar perangkat, dan status koneksi.','Printer'],
+    ['36','36-Cetak','Cetak','alat','Perangkat','Status printer, mode 32/48 CHR, dan pratinjau struk.','Printer'],
+    ['37','37-Upload','Upload Data','jalan','Perjalanan','Checklist sinkronisasi, koneksi aman, dan log out.','Sinkronisasi']
+  ];
+
+  var grid = document.getElementById('grid');
+  var count = document.getElementById('count');
+  var q = document.getElementById('q');
+  var chips = document.getElementById('chips');
+  var cat = 'all';
+
+  function card(s){
+    var no=s[0], file=s[1], title=s[2], c=s[3], mod=s[4], desc=s[5], flow=s[6];
+    return '<article class="cmp" tabindex="0" role="button" data-cat="'+c+'" data-file="'+file+'" data-title="'+title+'" data-mod="'+mod+'" data-desc="'+desc+'" data-flow="'+flow+'" aria-label="Bandingkan '+title+'">' +
+      '<div class="pair">' +
+        '<figure class="shot old"><figcaption>Versi lama</figcaption><div class="img"><img loading="lazy" src="screenshots-old/'+file+'.png" alt="Tampilan lama '+title+'"></div></figure>' +
+        '<div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>' +
+        '<figure class="shot new"><figcaption>Draft revamp</figcaption><div class="img"><img loading="lazy" src="screenshots/'+file+'.png" alt="Tampilan revamp '+title+'"></div></figure>' +
+      '</div>' +
+      '<div class="cmp-meta"><span class="no">'+no+'</span><div><h3>'+title+' <span class="mod">'+mod+'</span></h3><p>'+desc+'</p></div></div>' +
+    '</article>';
+  }
+
+  grid.innerHTML = S.map(card).join('');
+
+  var items = Array.prototype.slice.call(grid.querySelectorAll('.cmp'));
+
+  function apply(){
+    var term = q.value.trim().toLowerCase(), shown = 0;
+    items.forEach(function(it){
+      var okCat = cat === 'all' || it.dataset.cat === cat;
+      var hay = (it.dataset.title + ' ' + it.dataset.mod + ' ' + it.dataset.desc + ' ' + it.dataset.flow).toLowerCase();
+      var vis = okCat && (!term || hay.indexOf(term) > -1);
+      it.style.display = vis ? '' : 'none';
+      if (vis) shown++;
+    });
+    count.textContent = shown + ' perbandingan';
+    var empty = grid.querySelector('.empty');
+    if (!shown && !empty){
+      empty = document.createElement('div');
+      empty.className = 'empty';
+      empty.textContent = 'Tidak ada layar yang cocok. Coba kata kunci lain.';
+      grid.appendChild(empty);
+    } else if (shown && empty){ empty.remove(); }
+  }
+
+  q.addEventListener('input', apply);
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return;
+    cat = b.dataset.cat;
+    chips.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('on', c === b); });
+    apply();
+  });
+
+  var modal = document.getElementById('modal');
+  var stage = document.getElementById('stage');
+  var range = document.getElementById('range');
+  var imgOld = document.getElementById('imgOld');
+  var imgNew = document.getElementById('imgNew');
+  var mtitle = document.getElementById('mtitle');
+  var mtitle2 = document.getElementById('mtitle2');
+  var mdesc = document.getElementById('mdesc');
+  var mflow = document.getElementById('mflow');
+  var mopen = document.getElementById('mopen');
+  var msub = document.getElementById('msub');
+
+  function setSplit(v){
+    stage.style.setProperty('--p', v + '%');
+  }
+  range.addEventListener('input', function(){ setSplit(range.value); });
+
+  function open(it){
+    var f = it.dataset.file;
+    imgOld.src = 'screenshots-old/' + f + '.png';
+    imgNew.src = 'screenshots/' + f + '.png';
+    mtitle.textContent = it.dataset.title;
+    mtitle2.textContent = it.dataset.title;
+    msub.textContent = it.dataset.mod + ' · Versi lama vs draft revamp';
+    mdesc.textContent = it.dataset.desc;
+    mflow.textContent = it.dataset.flow;
+    mopen.href = 'screens/' + f.toLowerCase() + '.html';
+    range.value = 50; setSplit(50);
+    modal.classList.add('open');
+    document.body.classList.add('locked');
+  }
+  function close(){
+    modal.classList.remove('open');
+    document.body.classList.remove('locked');
+  }
+
+  items.forEach(function(it){
+    it.addEventListener('click', function(){ open(it); });
+    it.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(it); }
+    });
+  });
+  modal.addEventListener('click', function(e){ if (e.target.closest('[data-close]')) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+
+  apply();
+})();
+</script>
+</body>
+</html>

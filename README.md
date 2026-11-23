@@ -23,6 +23,7 @@ Halaman utama:
 | Halaman | Isi |
 | --- | --- |
 | `index.html` | Galeri 37 layar dengan pencarian, filter modul, dan pratinjau penuh |
+| `comparison.html` | Komparasi berdampingan versi lama vs draft revamp + slider geser |
 | `design-system.html` | Token warna, tipografi, komponen, dan ikon |
 | `screens/01-login.html` | Titik masuk prototipe — seluruh navigasi saling terhubung |
 
@@ -33,6 +34,7 @@ Halaman utama:
 ```
 draft-revamp/
 ├── index.html                 # Galeri layar (desktop)
+├── comparison.html            # Komparasi lama vs revamp
 ├── design-system.html         # Dokumentasi visual
 ├── README.md
 ├── assets/
@@ -40,7 +42,8 @@ draft-revamp/
 │   ├── sprite.js              # Sprite ikon SVG
 │   └── app.js                 # Status bar, bottom nav, interaksi demo
 ├── screens/                   # 37 layar standalone (390 × 844)
-└── screenshots/               # Render PNG setiap layar (1080 × 2338)
+├── screenshots/               # Render PNG setiap layar (1080 × 2338)
+└── screenshots-old/           # Salinan screenshot APK lama untuk komparasi
 ```
 
 ---

@@ -111,9 +111,8 @@ a { color:inherit; }
 }
 .scroll::-webkit-scrollbar { display:none; }
 .scroll.bleed { padding:0 0 24px; }
-.scroll.pull { position:relative; z-index:2; padding-top:0; }
-.scroll.pull > .card:first-child, .scroll.pull > .float-card:first-child { margin-top:-42px; }
-.float-card { position:relative; z-index:2; margin-top:-42px; }
+.scroll.pull { position:relative; z-index:2; padding-top:10px; }
+.float-card { position:relative; z-index:2; }
 .hero-back { margin-bottom:10px; }
 
 /* Status bar (injected by app.js) */
@@ -177,7 +176,7 @@ a { color:inherit; }
   flex:none;
   background:var(--grad-hero);
   color:#fff;
-  padding:2px 20px 54px;
+  padding:2px 20px 26px;
   border-radius:0 0 30px 30px;
   overflow:hidden;
 }
